@@ -1,4 +1,4 @@
-
+ 
 <mat-grid-list cols="1" rowHeight="2:1">
     
     <mat-grid-tile>
@@ -7,35 +7,83 @@
             <div>
                 <h1>Register</h1>
             </div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="legacy">
-                <mat-label>First name</mat-label>
-                <input matInput>
+                <mat-label >First name</mat-label>
+                <input matInput formControlName="firstName">
+                
             </mat-form-field>
+            <div *ngIf="registerFormControl.firstName.invalid && (registerFormControl.firstName.dirty || registerFormControl.firstName.touched)">
+                <mat-error *ngIf="registerFormControl.firstName.errors?.required">
+                   First name is required.
+                </mat-error>
+                <mat-error *ngIf="registerFormControl.firstName.errors?.minlength">
+                    First name must be a at least 3 characters.
+                </mat-error>
+                <mat-error *ngIf="registerFormControl.firstName.errors?.maxlength">
+                    First name must be less then 20 characters.
+                </mat-error>
+            </div>
+            
             <br>
             <mat-form-field appearance="legacy">
                 <mat-label>Last name</mat-label>
-                <input matInput>
+                <input matInput formControlName="lastName">
             </mat-form-field>
+            <div *ngIf="registerFormControl.lastName.invalid && (registerFormControl.lastName.dirty || registerFormControl.lastName.touched)">
+                <mat-error *ngIf="registerFormControl.lastName.errors?.required">
+                    Last name is required.
+                </mat-error>
+                <mat-error *ngIf="registerFormControl.lastName.errors?.minlength">
+                    Last name must be a at least 3 characters.
+                </mat-error>
+                <mat-error *ngIf="registerFormControl.lastName.errors?.maxlength">
+                   Last name must be less then 20 characters.
+                </mat-error>
+            </div>
             <br>
             <mat-form-field appearance="legacy">
                 <mat-label>Email</mat-label>
-                <input matInput type="email">
+                <input matInput formControlName="email" type="email">
             </mat-form-field>
+            <div *ngIf="registerFormControl.email.invalid && (registerFormControl.email.dirty || registerFormControl.email.touched)">
+                <mat-error *ngIf="registerFormControl.email.errors?.required">
+                    Email is required.
+                </mat-error>
+                <mat-error *ngIf="registerFormControl.email.errors?.email">
+                    Email must be a valid email.
+                </mat-error>
+            </div>
             <br>
             <mat-form-field appearance="legacy">
                 <mat-label>Password</mat-label>
-                <input matInput type="password">
+                <input matInput formControlName="password" type="password">
             </mat-form-field>
+            <div *ngIf="registerFormControl.password.invalid && (registerFormControl.password.dirty || registerFormControl.password.touched)">
+                <mat-error *ngIf="registerFormControl.password.errors?.required">
+                    Password is required.
+                </mat-error>
+                <mat-error *ngIf="registerFormControl.password.errors?.minlength">
+                    Password must be a at least 8 characters.
+                </mat-error>
+            </div>
             <br>
             <mat-form-field appearance="legacy">
                 <mat-label>Confirm Password</mat-label>
-                <input matInput type="password">
+                <input matInput formControlName="confirmPassword" type="password">
             </mat-form-field>
+            <div *ngIf="registerFormControl.confirmPassword.invalid && (registerFormControl.confirmPassword.dirty || registerFormControl.confirmPassword.touched)">
+                <mat-error *ngIf="registerFormControl.confirmPassword.hasError('notSame')">
+                    Confirm password must match .
+                </mat-error>
+            </div>
             <br>
-            <button mat-button color="primary">
+            <button type="submit" [disabled]="!registerForm.valid" mat-button color="primary">
                 Register
             </button>
+        </form>
         </div>
+
     </mat-grid-tile>
 
   </mat-grid-list>
