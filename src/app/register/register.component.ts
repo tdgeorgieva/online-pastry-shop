@@ -6,6 +6,9 @@ import { FormControl, Validators, FormGroup, ValidationErrors, AbstractControl }
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
+
+
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
@@ -14,6 +17,8 @@ export class RegisterComponent implements OnInit {
   email: string;
   password: string;
   confirmPassword: string;
+  phone: string;
+  address: string;
 
   get registerFormControl() {
     return this.registerForm.controls;
@@ -37,30 +42,38 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
       this.registerForm = new FormGroup({
-        'firstName': new FormControl(this.firstName, [
+        firstName: new FormControl(this.firstName, [
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(20)
         ]),
-        'lastName': new FormControl(this.lastName, [
+        lastName: new FormControl(this.lastName, [
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(20)
         ]),
-        'password': new FormControl(this.password, [
+        password: new FormControl(this.password, [
           Validators.required,
           Validators.minLength(8),
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
         ]),
-        'email': new FormControl(this.email, [
+        email: new FormControl(this.email, [
           Validators.required,
-          Validators.email
+          Validators.email,
         ]),
-        'confirmPassword': new FormControl(this.confirmPassword, [
+        confirmPassword: new FormControl(this.confirmPassword, [
           RegisterComponent.matchValues('password'),
+        ]),
+        phone: new FormControl(this.phone, [
+          Validators.required,
+          Validators.maxLength(9),
+          Validators.minLength(8),
+          Validators.pattern('^[0-9 ]*')
         ])
 
-      })
+      });
 
       this.registerForm.controls.password.valueChanges.subscribe(() => {
         this.registerForm.controls.confirmPassword.updateValueAndValidity();

@@ -12,13 +12,19 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NameEditorComponent } from './name-editor/name-editor.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatMenuModule, } from '@angular/material/menu';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    NameEditorComponent
+    NameEditorComponent,
+    AddRecipeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,10 @@ import { NameEditorComponent } from './name-editor/name-editor.component';
     MatInputModule,
     MatButtonModule,
     MatGridListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatMenuModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

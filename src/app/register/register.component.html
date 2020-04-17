@@ -9,7 +9,7 @@
             </div>
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="legacy">
-                <mat-label >First name</mat-label>
+                <mat-label >First name*</mat-label>
                 <input matInput formControlName="firstName">
                 
             </mat-form-field>
@@ -27,7 +27,7 @@
             
             <br>
             <mat-form-field appearance="legacy">
-                <mat-label>Last name</mat-label>
+                <mat-label>Last name*</mat-label>
                 <input matInput formControlName="lastName">
             </mat-form-field>
             <div *ngIf="registerFormControl.lastName.invalid && (registerFormControl.lastName.dirty || registerFormControl.lastName.touched)">
@@ -43,7 +43,7 @@
             </div>
             <br>
             <mat-form-field appearance="legacy">
-                <mat-label>Email</mat-label>
+                <mat-label>Email*</mat-label>
                 <input matInput formControlName="email" type="email">
             </mat-form-field>
             <div *ngIf="registerFormControl.email.invalid && (registerFormControl.email.dirty || registerFormControl.email.touched)">
@@ -56,7 +56,7 @@
             </div>
             <br>
             <mat-form-field appearance="legacy">
-                <mat-label>Password</mat-label>
+                <mat-label>Password*</mat-label>
                 <input matInput formControlName="password" type="password">
             </mat-form-field>
             <div *ngIf="registerFormControl.password.invalid && (registerFormControl.password.dirty || registerFormControl.password.touched)">
@@ -66,10 +66,13 @@
                 <mat-error *ngIf="registerFormControl.password.errors?.minlength">
                     Password must be a at least 8 characters.
                 </mat-error>
+                <mat-error *ngIf="registerFormControl.password.errors?.pattern">
+                    Password must contain numbers, uppercase and lowercase letters.
+                </mat-error>
             </div>
             <br>
             <mat-form-field appearance="legacy">
-                <mat-label>Confirm Password</mat-label>
+                <mat-label>Confirm Password*</mat-label>
                 <input matInput formControlName="confirmPassword" type="password">
             </mat-form-field>
             <div *ngIf="registerFormControl.confirmPassword.invalid && (registerFormControl.confirmPassword.dirty || registerFormControl.confirmPassword.touched)">
@@ -78,6 +81,39 @@
                 </mat-error>
             </div>
             <br>
+            <mat-form-field appearance="legacy">
+                <mat-label>Phone*</mat-label>
+                <input matInput formControlName="phone" >
+            </mat-form-field>
+             <div *ngIf="registerFormControl.phone.invalid && (registerFormControl.phone.dirty || registerFormControl.phone.touched)">
+                <mat-error *ngIf="registerFormControl.phone.errors?.required">
+                    Phone is required.
+                </mat-error>
+                <mat-error *ngIf="registerFormControl.phone.errors?.maxlength">
+                   Phone must be less then 9 numbers.
+                 </mat-error>
+                 <mat-error *ngIf="registerFormControl.phone.errors?.minlength">
+                    Phone must be at least  8 numbers.
+                  </mat-error>
+                <mat-error *ngIf="registerFormControl.phone.errors?.pattern">
+                   Only numbers are allowed.
+                </mat-error>
+            </div>
+            <br>
+                <div class="row">
+                    <div class="col">
+                      <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Address</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                          <button ngbDropdownItem>Town</button>
+                          <button ngbDropdownItem>Street</button>
+                          <button ngbDropdownItem>Number</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            <br>
+            
             <button type="submit" [disabled]="!registerForm.valid" mat-button color="primary">
                 Register
             </button>
