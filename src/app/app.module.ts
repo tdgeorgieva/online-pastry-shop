@@ -16,6 +16,10 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatMenuModule, } from '@angular/material/menu';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,11 @@ import {MatSliderModule} from '@angular/material/slider';
     ReactiveFormsModule,
     MatRadioModule,
     MatMenuModule,
-    MatSliderModule
+    MatSliderModule,
+    MatPaginatorModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
