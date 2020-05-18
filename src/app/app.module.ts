@@ -9,25 +9,31 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NameEditorComponent } from './name-editor/name-editor.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatMenuModule, } from '@angular/material/menu';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatSelectModule} from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatMenuModule, } from '@angular/material/menu';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { MatDividerModule } from '@angular/material/divider';
+import { HeaderComponent } from './header/header.component';
+import { MatCardModule } from '@angular/material/card';
+import { MainPageComponent } from './main-page/main-page.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent,
-    NameEditorComponent,
     AddRecipeComponent,
+    HeaderComponent,
+    MainPageComponent,
+    SignInComponent,
 
   ],
   imports: [
@@ -45,9 +51,14 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatAutocompleteModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatDividerModule,
+    MatCardModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

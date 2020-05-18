@@ -1,16 +1,19 @@
+import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { NameEditorComponent } from './name-editor/name-editor.component';
 import { AddRecipeComponent} from './add-recipe/add-recipe.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent },
-  {path: 'login', component: LoginComponent},
-  {path: 'name-editor', component: NameEditorComponent},
+  {path: 'sign-in', component: SignInComponent},
   {path: 'add-recipe', component: AddRecipeComponent},
+  {path: 'header', component: HeaderComponent},
+  {path: 'main-page', component: MainPageComponent}
+
 ];
 
 @NgModule({

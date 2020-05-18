@@ -1,0 +1,48 @@
+<mat-card class="card">
+    <mat-card-title >
+        <h1 class="title">Sign In</h1>
+    </mat-card-title>
+    <mat-card-content>
+        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="legacy">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email">
+            </mat-form-field>
+            <br>
+            <div
+                *ngIf="loginFormControl.email.invalid && (loginFormControl.email.dirty ||loginFormControl.email.touched)">
+                <mat-error *ngIf="loginFormControl.email.errors?.required">
+                    Email is required.
+                </mat-error>
+                <mat-error *ngIf="loginFormControl.email.errors?.email">
+                    Email must be a valid email.
+                </mat-error>
+            </div>
+
+            <mat-form-field appearance="legacy">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password">
+            </mat-form-field>
+            <br>
+
+            <div
+                *ngIf="loginFormControl.password.invalid && (loginFormControl.password.dirty || loginFormControl.password.touched)">
+                <mat-error *ngIf="loginFormControl.password.errors?.required">
+                    Password is required.
+                </mat-error>
+                <mat-error *ngIf="loginFormControl.password.errors?.minlength">
+                    Password must be a at least 8 characters.
+                </mat-error>
+            </div>
+
+            <button type="submit" [disabled]="!loginForm.valid" mat-button color="primary" routerLink="/main-page">
+                Sign In
+            </button>
+            <br>
+
+            <button mat-button color="primary" routerLink="/register">
+                <mat-label>Create Account</mat-label>
+            </button>
+        </form>
+    </mat-card-content>
+</mat-card>
