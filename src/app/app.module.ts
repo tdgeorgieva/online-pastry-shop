@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule, } from '@angular/material/menu';
 import { MatSliderModule } from '@angular/material/slider';
@@ -23,17 +22,27 @@ import { HeaderComponent } from './header/header.component';
 import { MatCardModule } from '@angular/material/card';
 import { MainPageComponent } from './main-page/main-page.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { AccountComponent } from './account/account.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import {MatIconModule} from '@angular/material/icon';
+import { ShopComponent } from './shop/shop.component';
+
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    AddRecipeComponent,
     HeaderComponent,
     MainPageComponent,
     SignInComponent,
+    AccountComponent,
+    RecipesComponent,
+    ShopComponent,
+    ShoppingCartComponent,
 
   ],
   imports: [
@@ -54,7 +63,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     FormsModule,
     MatDividerModule,
     MatCardModule,
-    ScrollingModule
+    ScrollingModule,
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

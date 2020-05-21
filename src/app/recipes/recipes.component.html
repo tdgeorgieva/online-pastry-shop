@@ -1,0 +1,263 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- <mat-card class="card">
+    <mat-card-title>
+        <h1 class="title">Your Recipes</h1>
+    </mat-card-title>
+    <mat-card-content>
+        <div class="posts" *ngFor="let recipe of allRecipes">
+            <span class="span" routerLink="/recipe/{{recipe.id}}">{{ recipe.title }}</span>
+            <button mat-icon-button color="primary" routerLink="/edit/{{recipe.id}}">
+                <mat-icon class="icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="deleteRecipe(recipe.id)">
+                <mat-icon class="icon">delete</mat-icon>
+            </button>
+            <br>
+        </div>
+    </mat-card-content>
+</mat-card>  -->
+<mat-card class="card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>
+            <h1 class="title">Add New Recipe</h1>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="newRecipeForm" [formGroup]="recipeForm">
+            <mat-form-field appearance="legacy">
+                <mat-label>Title</mat-label>
+                <input required matInput formControlName="title">
+            </mat-form-field><br>
+            <div
+                *ngIf="recipeFormControl.title.invalid && (recipeFormControl.title.dirty ||recipeFormControl.title.touched)">
+                <mat-error *ngIf="recipeFormControl.title.errors?.required">
+                    Title is required.
+                </mat-error>
+                <mat-error *ngIf="recipeFormControl.title.errors?.maxLength">
+                    Title is too long.
+                </mat-error>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea required matInput formControlName="description"></textarea>
+            </mat-form-field>
+            <div
+                *ngIf="recipeFormControl.description.invalid && (recipeFormControl.description.dirty ||recipeFormControl.description.touched)">
+                <mat-error *ngIf="recipeFormControl.description.errors?.required">
+                    Description is required.
+                </mat-error>
+                <mat-error *ngIf="recipeFormControl.description.errors?.pattern">
+                    Only letters are allowed.
+                </mat-error>
+            </div> <br>
+            <!-- <mat-form-field appearance="legacy">
+                <mat-label>Ingredients</mat-label>
+                <input required #newIngr matInput formControlName="ingredientsList" (keyup.enter)="addIngredient(newIngr.value)"
+                    newIngr.value=''>
+            </mat-form-field>
+            <div
+                *ngIf="recipeFormControl.ingredientsList.invalid && (recipeFormControl.ingredientsList.dirty ||recipeFormControl.ingredientsList.touched)">
+                <mat-error *ngIf="recipeFormControl.ingredientsList.errors?.required">
+                    Ingredients are required.
+                </mat-error>
+            </div><br> -->
+            <mat-form-field appearance="fill">
+                <mat-label>Directions</mat-label>
+                <textarea required matInput formControlName="directions"></textarea>
+            </mat-form-field>
+            <div
+                *ngIf="recipeFormControl.directions.invalid && (recipeFormControl.directions.dirty ||recipeFormControl.directions.touched)">
+                <mat-error *ngIf="recipeFormControl.directions.errors?.required">
+                    Directions are required.
+                </mat-error>
+            </div><br>
+            <mat-form-field class="time" appearance="legacy">
+                <mat-label>Prep Time</mat-label>
+                <input required matInput formControlName="prepTime">
+            </mat-form-field>
+            <div
+                *ngIf="recipeFormControl.prepTime.invalid && (recipeFormControl.prepTime.dirty ||recipeFormControl.prepTime.touched)">
+                <mat-error *ngIf="recipeFormControl.prepTime.errors?.required">
+                    *Required.
+                </mat-error>
+            </div>
+            <mat-form-field class="time" appearance="legacy">
+                <mat-label>Cook Time</mat-label>
+                <input required matInput formControlName="cookTime">
+            </mat-form-field>
+            <div
+                *ngIf="recipeFormControl.cookTime.invalid && (recipeFormControl.cookTime.dirty ||recipeFormControl.cookTime.touched)">
+                <mat-error *ngIf="recipeFormControl.cookTime.errors?.required">
+                    *Required.
+                </mat-error>
+            </div><br>
+            <mat-label>Difficulty </mat-label>
+            <mat-slider></mat-slider><br>
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <input required type="text" placeholder="Number of Servings" aria-label="Number" matInput
+                    [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field><br>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1">Private </mat-radio-button>
+                <mat-radio-button value="2">Public</mat-radio-button>
+            </mat-radio-group>
+            <div class="example-button-row">
+                <button mat-flat-button>Save</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="card">
+    <mat-card-title>
+        <h1 class="title">Ingredients</h1>
+    </mat-card-title>
+    <mat-card class="card1">
+        <mat-card-content>
+
+            <div class="menu">
+                <button class="menuButton" mat-button #menuTrigger="matMenuTrigger"
+                    [matMenuTriggerFor]="ingredientsMenu" yPosition="below">Menu</button>
+                <mat-menu #ingredientsMenu="matMenu">
+
+                    <div class="dairy">
+
+                        <button style="text-align:left" mat-menu-item [matMenuTriggerFor]="dairy">
+                            <img class="img" src="assets/dairy.png">
+                            Dairy</button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="nuts">
+
+                        <button style="text-align:left" mat-menu-item [matMenuTriggerFor]="nuts">
+                            <img class="img" src="assets/nuts.png">
+                            Nuts</button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="alcohol">
+
+                        <button style="text-align:left" mat-menu-item [matMenuTriggerFor]="alcohol">
+                            <img class="img" src="assets/alcohol.png">
+                            Alcohol</button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="oils">
+
+                        <button style="text-align:left" mat-menu-item [matMenuTriggerFor]="oils">
+                            <img class="img" src="assets/oils.png">
+                            Oils</button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="sweeteners">
+
+                        <button style="text-align:left" mat-menu-item [matMenuTriggerFor]="sweeteners">
+                            <img class="img" src="assets/added_sweeteners.png">
+                            Added Sweeteners</button>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="baking">
+
+                        <button style="text-align:left" mat-menu-item [matMenuTriggerFor]="baking">
+                            <img class="img" src="assets/baking_grains.png">
+                            Baking & Grains</button>
+                    </div>
+                </mat-menu>
+
+                <mat-menu class="options" #dairy="matMenu" yPosition="below">
+                    <button (click)="addIngredient('Butter')" mat-menu-item>Butter</button>
+                    <button (click)="addIngredient('Egg')" mat-menu-item>Egg</button>
+                    <button (click)="addIngredient('Milk')" mat-menu-item>Milk</button>
+                    <button (click)="addIngredient('Sour Cream')" mat-menu-item>Sour Cream</button>
+                    <button (click)="addIngredient('Yogurt')" mat-menu-item>Yogurt</button>
+                </mat-menu>
+
+                <mat-menu class="options" #nuts="matMenu">
+                    <button (click)="addIngredient('Peanut')" mat-menu-item>Peanut</button>
+                    <button (click)="addIngredient('Almond')" mat-menu-item>Almond</button>
+                    <button (click)="addIngredient('Walnut')" mat-menu-item>Walnut</button>
+                    <button (click)="addIngredient('Pecan')" mat-menu-item>Pecan</button>
+                    <button (click)="addIngredient('Pistachio')" mat-menu-item>Pistachio</button>
+                    <button (click)="addIngredient('Macadamia')" mat-menu-item>Macadamia</button>
+                    <button (click)="addIngredient('Praline')" mat-menu-item>Praline</button>
+                </mat-menu>
+
+                <mat-menu class="options" #desserts="matMenu">
+                    <button mat-menu-item [matMenuTriggerFor]="chocolate">Chocolate</button>
+                    <button (click)="addIngredient('Biscotti biscuit')" mat-menu-item>Biscotti biscuit</button>
+                    <button (click)="addIngredient('Pudding mix')" mat-menu-item>Pudding mix</button>
+                    <button (click)="addIngredient('Cookies')" mat-menu-item>Cookies</button>
+                    <button (click)="addIngredient('Oreo')" mat-menu-item>Oreo</button>
+                    <button (click)="addIngredient('Caramel')" mat-menu-item>Caramel</button>
+                </mat-menu>
+                <mat-menu class="options" #chocolate="matMenu">
+                    <button (click)="addIngredient('White chocolate')" mat-menu-item>White chocolate</button>
+                    <button (click)="addIngredient('Dark chocolate')" mat-menu-item>Dark chocolate</button>
+                    <button (click)="addIngredient('Chocolate pudding')" mat-menu-item>Chocolate pudding</button>
+                    <button (click)="addIngredient('Chocolate syrop')" mat-menu-item>Chocolate syrop</button>
+                </mat-menu>
+
+                <mat-menu class="options" #alcohol="matMenu">
+                    <button (click)="addIngredient('Rasberry liquor')" mat-menu-item>Rasberry liquor</button>
+                    <button (click)="addIngredient('Limocello')" mat-menu-item>Limocello</button>
+                </mat-menu>
+
+                <mat-menu class="options" #oils="matMenu">
+                    <button (click)="addIngredient('Hazelnut oil')" mat-menu-item>Hazelnut oil</button>
+                    <button (click)="addIngredient('Almond oil')" mat-menu-item>Almond oil</button>
+                    <button (click)="addIngredient('Soybean oil')" mat-menu-item>Soybean oil</button>
+                </mat-menu>
+
+                <mat-menu class="options" #sweeteners="matMenu">
+                    <button mat-menu-item [matMenuTriggerFor]="sugar">Sugar</button>
+                    <button (click)="addIngredient('Honey')" mat-menu-item>Honey</button>
+                    <button (click)="addIngredient('Corn syrop')" mat-menu-item>Corn syrop</button>
+                    <button (click)="addIngredient('Artificial sweetener')" mat-menu-item>Artificial sweetener</button>
+                    <button (click)="addIngredient('Molasses')" mat-menu-item>Molasses</button>
+                    <button (click)="addIngredient('Agave nectar')" mat-menu-item>Agave nectar</button>
+                </mat-menu>
+
+                <mat-menu class="options" #sugar="matMenu">
+                    <button (click)="addIngredient('Brown sugar')" mat-menu-item>Brown sugar</button>
+                    <button (click)="addIngredient('White sugar')" mat-menu-item>White sugar</button>
+                    <button (click)="addIngredient('Confectioners sugar')" mat-menu-item>Confectioners sugar</button>
+                </mat-menu>
+
+                <mat-menu class="options" #baking="matMenu">
+                    <button (click)="addIngredient('Baking soda')" mat-menu-item>Baking soda</button>
+                    <button (click)="addIngredient('Cake mix')" mat-menu-item>Cake mix</button>
+                    <button (click)="addIngredient('Self rising flour')" mat-menu-item>Self rising flour</button>
+                </mat-menu>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card1">
+        <mat-card-title>
+            <h2>Quantity</h2>
+        </mat-card-title>
+        <mat-card-content>
+            <div class="displayIngredients">
+                <ul>
+                    <li class="listIngredients" *ngFor="let ingredient of ingredients">{{ingredient}}
+                        <p><input required type="text" placeholder="Quantity" aria-label="Number" matInput
+                                [formControl]="myControl" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of options" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </p>
+                        <button (click)="remIngredient(ingredient)" class="fa"><i class="fa fa-trash-o"></i> </button>
+                    </li>
+                </ul>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</mat-card>
