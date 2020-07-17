@@ -37,6 +37,8 @@ export class NgbTimeStringAdapter extends NgbTimeAdapter<string> {
 })
 
 export class NewRecipeComponent implements OnInit {
+  isSubmitted = false;
+  isSuccessful = false;
   prepTime: string;
   cookTime: '13:30:00';
   recipe: Recipe;
@@ -75,6 +77,7 @@ export class NewRecipeComponent implements OnInit {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
+    this.isSubmitted = true;
     console.warn(this.recipeForm.value);
     const recipe = new Recipe(this.recipeForm.controls.recipeName.value,
       this.recipeForm.controls.description.value,
@@ -88,6 +91,7 @@ export class NewRecipeComponent implements OnInit {
     recipe.user_id = this.authService.currentUserId;
     //recipe.products = this.product servise. cartproducts + delivery adres
     this.recipeService.create(recipe).subscribe(res => {
+      this.isSuccessful = true;
       // res.headers.keys();
       // this.router.navigate([res.headers.get('location')]);
     });
