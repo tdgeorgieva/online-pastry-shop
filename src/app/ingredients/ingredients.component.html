@@ -1,0 +1,159 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class='display first ingr panel panel-primary'>
+  <div class=" panel-heading">
+    <p> Your Ingredients({{counter}})</p>
+  </div>
+  <mat-card class='panel-body'>
+    <div class="ingredients">
+      <img class="imgSpoon" src="assets/spoon.jpg">
+      <h2> Choose your products</h2>
+    </div>
+    <br>
+
+    <div>
+
+      <div>
+        <!--<button mat-button [matMenuTriggerFor]="animals">Animal index</button> -->
+
+        <button style="text-align:left" #menuTrigger="matMenuTrigger" mat-button [matMenuTriggerFor]="dairy"
+          yPosition="above">
+          <img class="img" src="assets/dairy.png">
+          Dairy</button>
+        <mat-divider></mat-divider>
+        <div class="nuts">
+
+          <button style="text-align:left" #menuTrigger="matMenuTrigger" mat-button [matMenuTriggerFor]="nuts">
+            <img class="img" src="assets/nuts.png">
+            Nuts</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="alcohol">
+
+          <button style="text-align:left" #menuTrigger="matMenuTrigger" mat-button [matMenuTriggerFor]="alcohol">
+            <img class="img" src="assets/alcohol.png">
+            Alcohol</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="oils">
+
+          <button style="text-align:left" #menuTrigger="matMenuTrigger" mat-button [matMenuTriggerFor]="oils">
+            <img class="img" src="assets/oils.png">
+            Oils</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="sweeteners">
+
+          <button style="text-align:left" #menuTrigger="matMenuTrigger" mat-button [matMenuTriggerFor]="sweeteners">
+            <img class="img" src="assets/added_sweeteners.png">
+            Added Sweeteners</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="baking">
+
+          <button style="text-align:left" #menuTrigger="matMenuTrigger" mat-button [matMenuTriggerFor]="baking">
+            <img class="img" src="assets/baking_grains.png">
+            Baking & Grains</button>
+        </div>
+
+        <mat-menu class="options" #dairy="matMenu" yPosition="below">
+          <button (click)="addIngredient('Butter')" mat-menu-item>Butter</button>
+          <button (click)="addIngredient('Egg')" mat-menu-item>Egg</button>
+          <button (click)="addIngredient('Milk')" mat-menu-item>Milk</button>
+          <button (click)="addIngredient('Sour Cream')" mat-menu-item>Sour Cream</button>
+          <button (click)="addIngredient('Yogurt')" mat-menu-item>Yogurt</button>
+        </mat-menu>
+
+        <mat-menu class="options" #nuts="matMenu">
+          <button (click)="addIngredient('Peanut')" mat-menu-item>Peanut</button>
+          <button (click)="addIngredient('Almond')" mat-menu-item>Almond</button>
+          <button (click)="addIngredient('Walnut')" mat-menu-item>Walnut</button>
+          <button (click)="addIngredient('Pecan')" mat-menu-item>Pecan</button>
+          <button (click)="addIngredient('Pistachio')" mat-menu-item>Pistachio</button>
+          <button (click)="addIngredient('Macadamia')" mat-menu-item>Macadamia</button>
+          <button (click)="addIngredient('Praline')" mat-menu-item>Praline</button>
+        </mat-menu>
+
+        <mat-menu class="options" #desserts="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="chocolate">Chocolate</button>
+          <button (click)="addIngredient('Biscotti biscuit')" mat-menu-item>Biscotti biscuit</button>
+          <button (click)="addIngredient('Pudding mix')" mat-menu-item>Pudding mix</button>
+          <button (click)="addIngredient('Cookies')" mat-menu-item>Cookies</button>
+          <button (click)="addIngredient('Oreo')" mat-menu-item>Oreo</button>
+          <button (click)="addIngredient('Caramel')" mat-menu-item>Caramel</button>
+        </mat-menu>
+        <mat-menu class="options" #chocolate="matMenu">
+          <button (click)="addIngredient('White chocolate')" mat-menu-item>White chocolate</button>
+          <button (click)="addIngredient('Dark chocolate')" mat-menu-item>Dark chocolate</button>
+          <button (click)="addIngredient('Chocolate pudding')" mat-menu-item>Chocolate pudding</button>
+          <button (click)="addIngredient('Chocolate syrop')" mat-menu-item>Chocolate syrop</button>
+        </mat-menu>
+
+        <mat-menu class="options" #alcohol="matMenu">
+          <button (click)="addIngredient('Rasberry liquor')" mat-menu-item>Rasberry liquor</button>
+          <button (click)="addIngredient('Limocello')" mat-menu-item>Limocello</button>
+        </mat-menu>
+
+        <mat-menu class="options" #oils="matMenu">
+          <button (click)="addIngredient('Hazelnut oil')" mat-menu-item>Hazelnut oil</button>
+          <button (click)="addIngredient('Almond oil')" mat-menu-item>Almond oil</button>
+          <button (click)="addIngredient('Soybean oil')" mat-menu-item>Soybean oil</button>
+        </mat-menu>
+
+        <mat-menu class="options" #sweeteners="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="sugar">Sugar</button>
+          <button (click)="addIngredient('Honey')" mat-menu-item>Honey</button>
+          <button (click)="addIngredient('Corn syrop')" mat-menu-item>Corn syrop</button>
+          <button (click)="addIngredient('Artificial sweetener')" mat-menu-item>Artificial sweetener</button>
+          <button (click)="addIngredient('Molasses')" mat-menu-item>Molasses</button>
+          <button (click)="addIngredient('Agave nectar')" mat-menu-item>Agave nectar</button>
+        </mat-menu>
+
+        <mat-menu class="options" #sugar="matMenu">
+          <button (click)="addIngredient('Brown sugar')" mat-menu-item>Brown sugar</button>
+          <button (click)="addIngredient('White sugar')" mat-menu-item>White sugar</button>
+          <button (click)="addIngredient('Confectioners sugar')" mat-menu-item>Confectioners sugar</button>
+        </mat-menu>
+
+        <mat-menu class="options" #baking="matMenu">
+          <button (click)="addIngredient('Baking soda')" mat-menu-item>Baking soda</button>
+          <button (click)="addIngredient('Cake mix')" mat-menu-item>Cake mix</button>
+          <button (click)="addIngredient('Self rising flour')" mat-menu-item>Self rising flour</button>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<div class="display">
+  <mat-card class="first ingr">
+    <div>
+      <ul class="box">
+        <li class="list" *ngFor="let ingredient of ingredients">{{ingredient}}
+          <input class="list-item" type="text" placeholder="Quantity" aria-label="Number" matInput
+            [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </li>
+        <li class="list" *ngFor="let ingredient of ingredients">
+          <input class="list-item" type="text" placeholder="Measure" matInput [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let measure of measures" [value]="measure">
+              {{measure}}
+            </mat-option>
+          </mat-autocomplete>
+          <button class="list-item" mat-flat-button color="accent" role="button" (click)="remIngredient(ingredient)">
+            <mat-icon>delete</mat-icon>Remove
+          </button>
+        </li>
+      </ul>
+    </div>
+  </mat-card>
+</div>
+
+
+<div class="example-box" cdkDrag>
+  Drag me around
+</div>

@@ -1,0 +1,26 @@
+  <mat-card class="card">
+    <mat-card-title>
+      <h1 class="title">Users</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <div>
+        <ul class="users">
+          <li class="user" *ngFor="let user of users">
+            <div class="userName">
+              <img class='img' src="{{ user.image }}" title="{{user.firstName}}">
+              <h3 class="userName">
+                {{ user.firstName }} {{user.lastName}}</h3>
+            </div>
+            <div class="userName">
+              <button mat-stroked-button class="btn btn--outline btn-square uppercase"
+                routerLink="/account/{{user._id}}">
+                View User Profile</button>
+              <button mat-stroked-button class="btn btn--outline btn-square uppercase" (click)="deleteUser(user._id)">
+                Delete User
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </mat-card-content>
+  </mat-card>

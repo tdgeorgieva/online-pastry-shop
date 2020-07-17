@@ -1,12 +1,20 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 <mat-card class="header">
-    <mat-card-content>
-        <span class="headerLinks" routerLink="/main-page">Home</span>
-        <span class="headerLinks" routerLink="/account">Account</span>
-        <span class="headerLinks" routerLink="/shop">Shop</span>
-        <span class="headerLinks" routerLink="/shopping-cart">Shopping Cart</span>
-        <span class="headerLinks" routerLink="/recipes">My Recipes</span>
-        <span class="headerLinks" routerLink="/sign-in">Sign in</span>
-        <span class="headerLinks" routerLink="/register">Sign-up</span>
-    </mat-card-content>
+  <mat-card-content>
+    <span class="headerLinks" routerLink="/main-page">Home</span>
+    <span class="headerLinks" routerLink="/shop">Shop</span>
+    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/recipes">Recipes</span>
+    <span *ngIf="this.AuthService.isLoggedOut()" class="headerLinks" routerLink="/sign-in">Sign in</span>
+    <span *ngIf="this.AuthService.isLoggedOut()" class="headerLinks" routerLink="/register">Sign-up</span>
+    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/account/">Account</span>
+    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/shopping-cart">Shopping Cart</span>
+    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/my-recipes">My Recipes</span>
+    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/main-page" (click)="logOut()">Log
+      Out</span>
+    <span *ngIf="this.AuthService.isLoggedIn() && this.AuthService.hasPrivilege([this.adminRole])" class="headerLinks"
+      routerLink="/add-product">Add Product</span>
+    <span *ngIf="this.AuthService.isLoggedIn() && this.AuthService.hasPrivilege([this.adminRole])" class="headerLinks"
+      routerLink="/users">Users</span>
+
+  </mat-card-content>
 </mat-card>

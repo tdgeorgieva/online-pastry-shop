@@ -1,0 +1,110 @@
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+<mat-card class="card">
+  <mat-card-content *ngIf="!this.isSubmitted || (this.isSubmitted && !this.isSuccessful)">
+    <div class="title">Purchase Reciept</div>
+    <div class="info">
+      <div class="row">
+        <div class="col-7"> <span id="heading">Date</span><br> <span id="details">{{myDate | date: 'shortDate' }}</span>
+        </div>
+        <div class="col-5 pull-right"> <span id="heading">Order No.</span><br> <span id="details">{{orderNo}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="pricing">
+      <div class="row" *ngFor="let product of productList">
+        <div class="col-9"> <span id="name">{{product.productName}}</span> </div>
+        <div class="col-3"> <span id="price">€{{product.price}}</span> </div>
+      </div>
+    </div>
+    <div class="total">
+      <div class="row">
+        <div class="col-9"> <span id="name">Shipping</span> </div>
+        <div class="col-3"> <span id="price">£2.05</span> </div>
+        <div class="totalSum col-9">Total</div>
+        <div class="totalSum col-3">£262.99</div>
+      </div>
+    </div>
+    <div class="title">Please, provide valid address: <input type="text"></div>
+    <div class="title">
+      <form class="card2">
+        <div class="form-header">
+          <h4 class="title">Credit card detail</h4>
+        </div>
+
+        <div class="form-body">
+          <!-- Card Number -->
+          <input type="text" class="card-number" placeholder="Card Number">
+
+          <!-- Date Field -->
+          <div class="date-field">
+            <div class="month">
+              <select name="Month" placeholder="Month">
+                <option value="" disabled selected>Month</option>
+                <option value="january">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">December</option>
+              </select>
+            </div>
+            <div class="year">
+              <select name="Year" placeholder="Year">
+                <option value="" disabled selected>Year</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Card Verification Field -->
+          <div class="card-verification">
+            <div class="cvv-input">
+              <input type="text" placeholder="CVV">
+            </div>
+            <div class="cvv-details">
+              <p>3 or 4 digits usually found <br> on the signature strip</p>
+            </div>
+          </div>
+
+
+        </div>
+      </form>
+    </div>
+
+
+    <div class="center">
+      <button routerLink="/shop" class="button">Back to shop</button>
+      <button (click)="finish()" class="button">Proceed</button>
+    </div>
+  </mat-card-content>
+  <mat-card-content *ngIf="this.isSuccessful && this.isSubmitted">
+    <h2>Thank you for ordering!</h2>
+    <p>You order is complete now.</p>
+    <div class="tracking">
+      <div class="title">Tracking Order</div>
+    </div>
+    <div class="progress-track">
+      <ul id="progressbar">
+        <li class="step0 active " id="step1">Ordered</li>
+        <li class="step0 text-center" id="step2">Shipped</li>
+        <li class="step0 text-right" id="step3">On the way</li>
+        <li class="step0 text-right" id="step4">Delivered</li>
+      </ul>
+    </div>
+    <button class="button" type="button" routerLink="/shop">Close</button>
+  </mat-card-content>
+</mat-card>

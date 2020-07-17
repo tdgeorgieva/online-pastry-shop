@@ -1,6 +1,6 @@
 .header {
-  background-color: bisque;
-  color: rgb(167, 105, 224);
+  background-color: #4ca8af;
+  color: white;
   width: 95%;
   margin: 1%;
   text-align: center;
@@ -10,5 +10,12 @@
   margin: 1%;
   font-family: "Tangerine", serif;
   font-size: 200%;
-  font-weight: bold;
+  cursor: pointer;
+}
+thead {
+  color: #337AB7;
+}
+.img {
+  width: 50px;
+  margin: 2px;
 }

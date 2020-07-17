@@ -1,0 +1,24 @@
+.img {
+  width:470px;
+  margin: 1%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.product-view {
+
+  background-color: bisque;
+  color: rgb(167, 105, 224);
+  width: 400px;
+  margin: 1%;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+
+}
+.star-rating {
+    display: inline-block;
+}
+.noOverflow {
+  overflow: hidden;
+}

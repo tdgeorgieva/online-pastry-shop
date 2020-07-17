@@ -1,49 +1,52 @@
 import { Injectable } from '@angular/core';
-import { Recipe, IdType } from './recipe.model';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError, Observable } from 'rxjs';
+import { Recipe } from './recipe.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-  constructor() {
-    console.log('calling recipeservice ctr');
-    const data = JSON.parse(localStorage.getItem('recipes'));
-    if (data !== null) {
-      this.recipes = data;
-      console.log('service posts', this.recipes);
-      RecipeService.nextId = this.recipes.length;
-    }
-   }
-
-  static nextId = 0;
-  private recipes = [];
-
-  findAll() {
-    return this.recipes;
-  }
-  findById(id: IdType): Recipe | undefined {
-    return this.recipes.find(e => e.id === id);
-  }
+  constructor(private http: HttpClient) { }
   create(recipe: Recipe) {
-    console.log(RecipeService.nextId);
-    recipe.id = ++RecipeService.nextId;
-    console.log(RecipeService.nextId);
-    this.recipes.push(recipe);
-    localStorage.setItem('accounts', JSON.stringify(this.recipes));
+    return this.http.post<Recipe>('/api/addRecipe', recipe, {observe: 'response'})
+    .pipe(
+      catchError(this.handleError)
+    );
   }
-  update(recipe: Recipe): Recipe {
-    const index = this.recipes.findIndex(p => p.id === recipe.id);
-    if (index >= 0) {
-      this.recipes[index] = recipe;
-      localStorage.setItem('recipes', JSON.stringify(this.recipes));
-      return recipe;
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error(`Status code ${error.status} An error occurred:`, error.error.message);
     } else {
-      throw new Error(`Recipe with ID=${recipe.id} not found.`);
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
     }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+    }
+    findAll(): Observable<Recipe[]> {
+      return this.http.get<Recipe[]>('/api/recipes')
+              .pipe(catchError(this.handleError));
+    }
+    findById(id: string): Observable<Recipe> | undefined {
+      // return this.posts.find(e => e.id === id);
+       return this.http.get<Recipe>('/api/recipe/' + id)
+             .pipe(catchError(this.handleError));
+     }
+     remove(id: string) {
+      return this.http.delete<Recipe>('/api/recipe/' + id)
+            .pipe(catchError(this.handleError));
+    }
+    findByUserId(id: string): Observable<Recipe[]> | undefined {
+      return this.http.get<Recipe[]>('/api/recipe/user/' + id)
+          .pipe(catchError(this.handleError));
   }
-  remove(id: IdType) {
-    this.recipes.splice(this.recipes.findIndex(item => item === id), 1);
-    localStorage.setItem('recipes', JSON.stringify(this.recipes));
-  }
+
 }

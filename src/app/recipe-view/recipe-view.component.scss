@@ -1,0 +1,101 @@
+.img {
+  max-height: 400px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.card {
+  width: 900px;
+  margin: 2%;
+}
+
+input[type=text],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 360px;
+  background-color: #4ca8af;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+p {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  //display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.profile {
+  max-width: 400px;
+  margin: 2%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.title {
+  width: 360px;
+  background-color: #4ca8af;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+}
+
+label {
+  font-style: italic;
+}
+ul {
+  list-style: none;
+  border: 1px solid #4ca8af;
+  width: 90%;
+}
+ul li::before {
+  content: "\2022";
+  color: #4ca8af;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+span {
+  color: #4ca8af;
+  font-style: italic;
+}
+.checked {
+  color: orange;
+}
+.button {
+  width: 100px;
+  background-color: #4ca8af;
+  color: white;
+  padding: 8px 10px;
+  margin:2%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

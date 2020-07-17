@@ -24,13 +24,34 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AccountComponent } from './account/account.component';
-import { RecipesComponent } from './recipes/recipes.component';
 import {MatIconModule} from '@angular/material/icon';
 import { ShopComponent } from './shop/shop.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatChipsModule} from '@angular/material/chips';
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-
+import { StarComponentComponent } from './star-component/star-component.component';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { MyRecipesComponent } from './my-recipes/my-recipes.component';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AddProductComponent } from './add-product/add-product.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { RecipeViewComponent } from './recipe-view/recipe-view.component';
+import { UsersComponent } from './users/users.component';
+import { LogOutComponent } from './log-out/log-out.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuardService } from './auth-guard.service';
+import { CommentsComponent } from './comments/comments.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { DeliveryComponent } from './delivery/delivery.component';
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -40,9 +61,20 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     MainPageComponent,
     SignInComponent,
     AccountComponent,
-    RecipesComponent,
     ShopComponent,
     ShoppingCartComponent,
+    StarComponentComponent,
+    ProductViewComponent,
+    RecipesComponent,
+    MyRecipesComponent,
+    NewRecipeComponent,
+    IngredientsComponent,
+    AddProductComponent,
+    RecipeViewComponent,
+    UsersComponent,
+    LogOutComponent,
+    CommentsComponent,
+    DeliveryComponent,
 
   ],
   imports: [
@@ -65,10 +97,24 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     MatCardModule,
     ScrollingModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatChipsModule,
+    HttpClientModule,
+    NgbModule,
+    DragDropModule,
+    RatingModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:3000'],
+        disallowedRoutes: [],
+      },
+    }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthGuardService],
+  bootstrap: [AppComponent],
+  entryComponents: [ProductViewComponent]
 })
 export class AppModule {
 

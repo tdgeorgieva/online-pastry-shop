@@ -1,28 +1,34 @@
-export type IdType = number;
-export interface Identifiable {
-    id: IdType;
-}
-export class Recipe implements Identifiable {
-    id: IdType;
-    title: string;
+export class Recipe {
+    _id: string;
+    recipeName: string;
     description: string;
-    ingredientsList: string;
     directions: string;
+    ingredients: string;
+    difficulty: number;
+    numberServings: number;
     prepTime: string;
     cookTime: string;
+    imageUrl: string;
+    user_id: string;
     constructor(
-                title: string,
-                description: string,
-                ingredientsList: string,
-                directions: string,
-                prepTime: string,
-                cookTime: string,
-               ) {
-        this.title = title;
+        recipeName: string,
+        description: string,
+        directions: string,
+        ingredients: string,
+        difficulty: number,
+        numberServings: number,
+        prepTime: string,
+        cookTime: string,
+        imageUrl: string) {
+
+        this.recipeName = recipeName;
         this.description = description;
-        this.ingredientsList = ingredientsList;
         this.directions = directions;
+        this.ingredients = ingredients;
+        this.difficulty = difficulty;
+        this.numberServings = numberServings;
         this.prepTime = prepTime;
         this.cookTime = cookTime;
+        this.imageUrl = imageUrl;
     }
 }

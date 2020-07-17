@@ -1,76 +1,31 @@
-
 <div class="image">
-    <div class="content-centered">
-        <h2>Products</h2></div>
- </div>
+  <div class="content-centered">
+    <h2>Products</h2>
+  </div>
+</div>
 
 <div class="wrapper">
-    <h3 class="subtitle">Sweet Delights Pastry Shop - Classic Desserts & Custom Cakes</h3>
-    <div class="homepage-content">
-        <p>Bring home somtehing wonderful!</p>
-    </div>
+  <h3 class="subtitle">Sweet Delights Pastry Shop - Classic Desserts & Custom Cakes</h3>
+  <div class="homepage-content">
+    <p>Bring home somtehing wonderful!</p>
+  </div>
 </div>
 
 <div class="products">
-    <div class="picture">
-        <div class="imgHolder">
-            <img src="/assets/4.jpg">
-        </div>
-        <div class="picture-content">
-            <h3>strawberry champagne heart cake</h3>
-            <h4>Price: &euro;5.99</h4>
-            <button mat-stroked-button (click)="openSnackBar()"  class="btn btn--outline btn-square uppercase"> Order now</button>
-        </div>
-    </div>
   <div class="picture">
-        <div class="imgHolder">
-            <img src="/assets/5.jpg">
-        </div>
-        <div class="picture-content">
-            <h3>french macarons</h3>
-            <h4>Price: &euro;2.70</h4>
-            <button mat-stroked-button (click)="openSnackBar()"  class="btn btn--outline btn-square uppercase"> Order now</button>
-        </div>
-    </div>
-    <div class="picture">
-        <div class="imgHolder">
-            <img src="/assets/6.jpg">
-        </div>
-        <div class="picture-content">
-            <h3>chocolate cream bitte sized tart - dozen</h3>
-            <h4>Price: &euro;12.50</h4>
-            <button mat-stroked-button (click)="openSnackBar()"  class="btn btn--outline btn-square uppercase"> Order now</button>
-        </div>
-    </div>
-    <div class="picture">
-        <div class="imgHolder">
-            <img src="/assets/8.jpg">
-        </div>
-        <div class="picture-content">
-            <h3>mini cupcakes</h3>
-            <h4>Price: &euro;2.50</h4>
-            <button mat-stroked-button (click)="openSnackBar()"  class="btn btn--outline btn-square uppercase"> Order now</button>
-        </div>
-    </div>
-    <div class="picture">
-        <div class="imgHolder">
-            <img src="/assets/9.jpg">
-        </div>
-        <div class="picture-content">
-            <h3>pumpkin chiffon pie</h3>
-            <h4>Price: &euro;16.90</h4>
-            <button mat-stroked-button (click)="openSnackBar()"  class="btn btn--outline btn-square uppercase"> Order now</button>
-        </div>
-    </div>
-    <div class="picture">
-        <div class="imgHolder">
-            <img src="/assets/7.jpg">
-        </div>
-        <div class="picture-content">
-            <h3>tri-color mousse cake</h3>
-            <h4>Price: &euro;3.50</h4>
-            <button mat-stroked-button (click)="openSnackBar()"  class="btn btn--outline btn-square uppercase"> Order now</button>
-        </div>
-    </div>
+    <ul class="items">
+      <li *ngFor="let product of products">
 
-</div> 
+        <h3 class="productTitle">{{ product.productName }}</h3>
+        <h4>Price: {{ product.price | currency: 'EUR':true: '1.2-2' }}</h4>
+        <button mat-button (click)="openDialog(product._id)">
+          <img class='img' [src]='product.imageUrl' [title]='product.productName'></button>
+        <button *ngIf="this.AuthService.isLoggedIn()" class="button" type="submit" (click)="add(product)" (click)="openSnackBar(product)">
+          Order Now
+        </button>
+      </li>
+
+    </ul>
+  </div>
+
+</div>

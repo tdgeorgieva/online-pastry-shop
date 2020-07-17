@@ -1,0 +1,103 @@
+<mat-card class="card">
+  <mat-card-title>
+    <h1 class="title">Add New Product</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="legacy">
+        <mat-label>Product Name</mat-label>
+        <input required matInput formControlName="productName">
+      </mat-form-field>
+      <div
+        *ngIf="productFormControl.productName.invalid && (productFormControl.productName.dirty ||productFormControl.productName.touched)">
+        <mat-error *ngIf="productFormControl.productName.errors?.required">
+          Product name is required.
+        </mat-error>
+        <mat-error *ngIf="productFormControl.productName.errors?.maxlength">
+            Product name is too long.
+          </mat-error>
+      </div> <br>
+       <mat-form-field appearance="legacy">
+        <mat-label>Product Code</mat-label>
+        <input required matInput formControlName="productCode">
+      </mat-form-field>
+      
+      <div
+        *ngIf="productFormControl.productCode.invalid && (productFormControl.productCode.dirty ||productFormControl.productCode.touched)">
+        <mat-error *ngIf="productFormControl.productCode.errors?.required">
+          Product code is required.
+        </mat-error>
+        <mat-error *ngIf="productFormControl.productCode.errors?.maxlength">
+          Product code must be 7 characters.
+        </mat-error>
+        <mat-error *ngIf="productFormControl.productCode.errors?.minlength">
+          Product code must be 7 characters.
+        </mat-error>
+      </div> <br>
+      <mat-form-field appearance="legacy">
+        <mat-label>Release Date</mat-label>
+        <input required matInput formControlName="releaseDate">
+      </mat-form-field>
+      <br>
+      <div
+        *ngIf="productFormControl.releaseDate.invalid && (productFormControl.releaseDate.dirty ||productFormControl.releaseDate.touched)">
+        <mat-error *ngIf="productFormControl.releaseDate.errors?.required">
+          Release date is required.
+        </mat-error>
+      </div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+      <div
+        *ngIf="productFormControl.description.invalid && (productFormControl.description.dirty ||productFormControl.description.touched)">
+        <mat-error *ngIf="productFormControl.description.errors?.required">
+          Description is required.
+        </mat-error>
+        <mat-error *ngIf="productFormControl.description.errors?.maxlength">
+          Description is too long.
+        </mat-error>
+      </div>
+      <br>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Price</mat-label>
+        <input required matInput formControlName="price">
+      </mat-form-field>
+      <br>
+      <div
+        *ngIf="productFormControl.price.invalid && (productFormControl.price.dirty ||productFormControl.price.touched)">
+        <mat-error *ngIf="productFormControl.price.errors?.required">
+          Price is required.
+        </mat-error>
+        <mat-error *ngIf="productFormControl.price.errors?.maxlength">
+            Wrong price format. Ex. "10.99";
+          </mat-error>
+          <mat-error *ngIf="productFormControl.price.errors?.minlength">
+            Wrong price format. Ex. "10.99";
+          </mat-error>
+      </div>
+      <mat-form-field appearance="legacy">
+        <mat-label>Star Rating</mat-label>
+        <input matInput formControlName="starRating">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Image Url</mat-label>
+        <input required matInput formControlName="imageUrl">
+      </mat-form-field>
+      <br>
+      <div
+        *ngIf="productFormControl.imageUrl.invalid && (productFormControl.imageUrl.dirty ||productFormControl.imageUrl.touched)">
+        <mat-error *ngIf="productFormControl.imageUrl.errors?.required">
+          Image is required.
+        </mat-error>
+      </div>
+      <button type="submit"  [disabled]="!productForm.valid" mat-button color="primary" >
+        Add Product
+      </button>
+      <br>
+    </form>
+  </mat-card-content>
+</mat-card>

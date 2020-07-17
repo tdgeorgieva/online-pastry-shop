@@ -1,105 +1,84 @@
-.card {
-  background-color: #ddbdf1;
-  width: 600px;
-  text-align: center;
-  margin: 2%;
-  height: 600px;
-  overflow: auto;
-  display: inline-block;
-  border: 1px solid black;
-}
 .title {
-font-family: "Tangerine", serif;
-font-size: 200%;
-color: rgb(169, 45, 207);
+  background-color: #4ca8af;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  
+  font-family: "Tangerine", serif;
+  font-size: 200%;
 }
-.newRecipeForm {
-  width: 300px;
-}
-.time {
-  width: 100;
-}
-.menuButton {
-  display: block;
+
+.img {
+  max-height: 400px;
+  object-fit: contain;
   
 }
-.card1 {
+
+.card {
+  width: 95%;
+  margin: 1%; 
+  background-color: #f2f2f2;
+}
+
+.listRecipes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.recipeTitle {
+    color:rgb(0, 60, 128);
+    font-style: oblique;
+}
+.container {
+  height: 50px;
+  position: relative;
+  width: 100px;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: max-content;
+  //border: 3px solid rgb(0, 60, 128);
+}
+.btn {
+  border-color:rgb(0, 60, 128) ;
+
+}
+.recipes {
   display: inline-block;
-  width: 30%;
-  margin: 20px;
-  vertical-align: top;
+  margin: 1%;
+}
+.button {
+  background-color: #4ca8af;
+  color: white;
+  padding: 8px 10px;
+  margin: 3px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  font-family: "Tangerine", serif;
+  font-size: 200%;
+  
 }
-.listIngredients {
-  display: flex;
+a {
+  height: 36px;
+  width: 68.22px;
+  background-color: #4ca8af;
+  color: white;
+  padding: 3px 6px;
+  margin: 3px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Tangerine", serif;
+  font-size: 200%;
+  text-align: center;
 }
-  
-// .myButton {
-//     background-color: rgb(109, 109, 206);
-//   }
-//   .button.mat-menu-item {
-//     text-decoration: solid;
-//     background-color: rgb(102, 102, 223);
-//   }
-//   .example-form {
-//     min-width: 150px;
-//     max-width: 500px;
-//     width: 100%;
-//   }
-  
-//   .example-full-width {
-//     width: 100%;
-//   }
-//   .imgSpoon {
-//     height: 300px;
-//     width: 400px;
-//   }
-//   .txtArea {
-//     font-size: 14px;
-//     box-sizing: border-box;
-//     border: none;
-//     box-shadow: none;
-//     outline: 0;
-//     background: 0 0;
-//     width: 100%;
-//     padding: 0 15px;
-//     line-height: 40px;
-//     height: 40px;
-//   }
-  
-//   .fa {
-//     font-size: 16px;
-//     border: none;
-//     color: rgb(0, 183, 255);
-//    }
-//   .flex-container {
-//     display: flex;
-//     flex-direction: row;
-//   }
-//   // .flex-child {
-//   //   border: 2px solid rgb(0, 183, 255);
-   
-//   //   display: inline-block;
-//   // }
-//   // .flex-child:first-child {
-//   //   margin-right: 20px;
-//   // }
-  .recipeForm {
-    width: 800px;
-  }
-  .img {
-    margin-right: 30px;
-    margin-top: 5px;
-    width: 40px;
-    height: 40px;
-    float: left;
-  }
-  .menu {
-    padding: 8px;
-  }
-  
-.example-header-image {
-  background-image: url("/assets/spoon.jpg");
-  background-size: cover;
-}
-  

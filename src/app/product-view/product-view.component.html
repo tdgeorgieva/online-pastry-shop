@@ -1,0 +1,14 @@
+<!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+<div class="product-view">
+    <h2 >{{ data.product.productName }}</h2>
+    <mat-dialog-content class="noOverflow">
+        <img class='img' [src]='data.product.imageUrl'  [title]='data.product.productName'>
+        <p>Price: {{ data.product.price | currency: 'EUR':true: '1.2-2' }}</p>
+        <p class="star-rating"><app-star-component> [rating]='data.product.starRating' </app-star-component></p><br>
+    
+    </mat-dialog-content>
+     
+    <button class="noOverflow" mat-button [mat-dialog-close]="true" (click)="add(product)" (click)="openSnackBar(data.product._id)">Add to Cart</button>
+    <button class="noOverflow" mat-button mat-dialog-close>Cancel</button>
+    
+</div>

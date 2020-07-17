@@ -1,0 +1,139 @@
+
+.title2 {
+  background-color: #4ca8af;
+  
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+
+  font-family: "Tangerine", serif;
+  font-size: 200%;
+  color: white;
+  text-align: center;
+  
+}
+h2.title {
+ 
+    display: inline-block;
+    width: 250px;
+    margin: 4%;
+}
+.img {
+  max-height: 400px;
+  object-fit: contain;
+}
+.profileImage {
+  width: 50px;
+  height: 70px;
+}
+.card2 {
+  width: 60%;
+  background-color: #f2f2f2;
+  margin: 2%;
+  //background-color: rgb(147, 187, 247);
+ 
+}
+.card1 {
+  margin: 2%;
+  width: 35%;
+}
+
+.listRecipes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.recipeTitle {
+    color:rgb(0, 60, 128);
+    font-style: oblique;
+}
+.container {
+  height: 50px;
+  position: relative;
+  width: 100px;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: max-content;
+  //border: 3px solid rgb(0, 60, 128);
+}
+.btn {
+  border-color:rgb(0, 60, 128) ;
+
+}
+.recipes {
+  display: inline-block;
+  margin: 1%;
+}
+
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 360px;
+  background-color: #4ca8af;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.profile {
+  max-width: 500px;
+  margin: 2%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.title {
+  margin: 4%;
+  width: 360px;
+  background-color: #4ca8af;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  font-family: "Tangerine", serif;
+  font-size: 200%;
+}
+.address2{
+  font-family: "Tangerine", serif;
+  font-size: 200%;
+  color: #4ca8af;
+  text-align: center;
+  
+}
+.button {
+  background-color: #4ca8af;
+  color: white;
+  padding: 8px 10px;
+  margin: 2%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}

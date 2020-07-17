@@ -1,0 +1,61 @@
+.title {
+  background-color: #4ca8af;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  display: inline;
+
+}
+td {
+    margin-top: 1%;
+}
+.card {
+  width: 600px;
+  margin: 2%;
+  background-color: rgb(147, 187, 247);
+}
+
+.product {
+  display: inline;
+
+}
+
+.userName {
+  display: inline-block;
+  margin: 5px;
+}
+.btn {
+    margin: 2%;
+    background-color: rgb(147, 187, 247);
+    margin-top: 0;
+}
+.checkmark {
+    text-align: center;
+}
+
+
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: #8C9EFF;
+    background-repeat: no-repeat
+}
+
+.card {
+    z-index: 0;
+    background-color: #ECEFF1;
+    padding-bottom: 20px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    border-radius: 10px
+}

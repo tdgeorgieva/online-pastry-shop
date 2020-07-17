@@ -1,4 +1,6 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Role } from '../user.model';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  adminRole: Role = Role.Admin;
+  constructor(private authService: AuthService) { }
 
-  constructor() { }
-
+  get AuthService() {
+    return this.authService;
+  }
+  logOut() {
+    this.authService.logout();
+  }
   ngOnInit(): void {
+    
   }
 
 }
