@@ -1,7 +1,7 @@
  <mat-card class="profile">
   <mat-card-content>
 
-    <form class="profile" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="userForm" >
       <div>
        <img class="profileImage" src="{{ user.image }}" title="{{user.firstName}}">
         

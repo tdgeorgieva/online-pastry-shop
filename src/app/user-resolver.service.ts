@@ -10,6 +10,7 @@ export class UserResolverService implements Resolve<any>{
   constructor(private userService: UserService) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const id = route.paramMap.get('id');
+    console.log("wliza", id);
     return this.userService.findById(id);
 
 

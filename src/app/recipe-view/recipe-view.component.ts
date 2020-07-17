@@ -21,7 +21,7 @@ export class RecipeViewComponent implements OnInit {
   constructor( private route: ActivatedRoute, private commentsService: CommentsService, private authService: AuthService) { }
   deleteComment(id: string): void {
     console.log('delete');
-    this.commentsService.remove(id).subscribe(() => this.commentsService.findAll().subscribe(
+    this.commentsService.remove(id).subscribe(() => this.commentsService.findByRecipeId(this.recipe._id).subscribe(
       comments => this.comments = comments));
   }
   get AuthService() {
@@ -32,10 +32,6 @@ export class RecipeViewComponent implements OnInit {
       this.recipe = data.recipe,
       console.log(data);
     });
-    // this.route.data.subscribe(data => {
-    //   this.user = data.user,
-    //   console.log(this.user);
-    // });
     this.commentsService.findByRecipeId(this.recipe._id).subscribe(comments => this.comments = comments);
   }
 

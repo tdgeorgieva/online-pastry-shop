@@ -55,8 +55,7 @@ export class AccountComponent implements OnInit {
     image: new FormControl(this.image, Validators.required),
   });
 
-  constructor(private userService: UserService, private recipeService: RecipeService, private route: ActivatedRoute,
-              private router: Router) {}
+  constructor(private userService: UserService, private recipeService: RecipeService, private route: ActivatedRoute) { }
 
   get userFormControl() {
     return this.userForm.controls;
@@ -66,36 +65,34 @@ export class AccountComponent implements OnInit {
     console.log('delete');
     this.recipeService.remove(id).subscribe(() => this.recipeService.findAll().subscribe(recipes => this.recipes = recipes));
   }
-  onSubmit() {
-    // console.warn(this.userForm.value);
-    // this.route.paramMap.subscribe(params => {
-    //   const id = params.get('id');
-    //   const user = new User(this.userForm.controls.firstName.value,
-    //     this.userForm.controls.lastName.value,
-    //     this.userForm.controls.email.value,
-    //     this.userForm.controls.password.value,
-    //     this.userForm.controls.phone.value,
-    //     this.userForm.controls.address.value,
-    //     this.userForm.controls.city.value,
-    //     this.userForm.controls.image.value);
-    //   this.userService.update(id, user).subscribe(res => {
-    //       // res.headers.keys();
-    //       // this.router.navigate([res.headers.get('location')]);
-    //     });
+  // onSubmit() {
+  //   console.warn(this.userForm.value);
+  //   this.route.paramMap.subscribe(params => {
+  //     const id = params.get('id');
+  //     const user = new User(this.userForm.controls.firstName.value,
+  //       this.userForm.controls.lastName.value,
+  //       this.userForm.controls.email.value,
+  //       this.userForm.controls.password.value,
+  //       this.userForm.controls.phone.value,
+  //       this.userForm.controls.address.value,
+  //       this.userForm.controls.city.value,
+  //       this.userForm.controls.image.value);
+  //     this.userService.update(id, user).subscribe(res => {
+  //         // res.headers.keys();
+  //         // this.router.navigate([res.headers.get('location')]);
+  //       });
 
-    // });
-  }
+  //   });
+  // }
   ngOnInit(): void {
-
-    this.route.data.subscribe(data => this.user = data.user);
-    this.recipeService.findByUserId(this.user._id).subscribe(recipes => this.recipes = recipes);
-   //  console.log(this.userFormControl.status.value);
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       console.log(id);
       if (id) {
         this.route.data.subscribe(data => {
           this.user = data.user;
+          this.userService.findById(this.user._id).subscribe(user => this.user = user);
+          this.recipeService.findByUserId(this.user._id).subscribe(recipes => this.recipes = recipes);
           this.userForm.patchValue({
             firstName: this.user.firstName,
             lastName: this.user.lastName,
@@ -106,6 +103,9 @@ export class AccountComponent implements OnInit {
             password: this.user.password,
           });
         });
-    }});
-   }
+      }
+    });
+  }
 }
+
+

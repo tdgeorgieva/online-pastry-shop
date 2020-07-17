@@ -6,6 +6,7 @@ import { Order } from '../order';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../user.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-delivery',
@@ -25,24 +26,19 @@ export class DeliveryComponent implements OnInit {
   isValid = false;
 
   constructor(private productService: ProductService, private orderService: OrderService,
-              private route: ActivatedRoute, private userService: UserService) { }
+              private route: ActivatedRoute, private userService: UserService, private authService: AuthService) { }
 
   finish(): void {
     this.isSubmitted = true;
     this.isSuccessful = true;
     this.productService.deleteCart();
+    console.log("finish");
+    const order = new Order(this.productsList, this.productService.displaySum(), this.authService.currentUserId);
+    this.orderService.create(order).subscribe(u => {
+     console.log('Order successfull!');
+     // this.router.navigate(['/main-page']);
+   });
   }
-  onSubmit() {
-    this.route.paramMap.subscribe(params => {
-       const id = params.get('id');
-       const order = new Order(this.productsList, this.productService.displaySum(), this.user.address, this.user._id, this.order.order_id);
-       this.orderService.create(order).subscribe(u => {
-      console.log('Order successfull!');
-      // this.router.navigate(['/main-page']);
-    });
-  });
-  }
-
     ngOnInit(): void { }
 
 }

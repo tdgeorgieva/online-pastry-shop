@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
 import { Order } from '../order';
 import { User } from '../user.model';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -20,8 +21,8 @@ export class ShoppingCartComponent implements OnInit {
   sum = this.productService.displaySum();
   showImage = false;
 
-  constructor( private productService: ProductService) { }
-
+  constructor( private productService: ProductService, private orderService: OrderService) { }
+  
   ngOnInit(): void {
     // console.log(this.productService.cartProducts.length);
     console.log(this.productService.cartProducts);

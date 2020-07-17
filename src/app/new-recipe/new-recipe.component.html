@@ -6,7 +6,7 @@
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="legacy">
         <mat-label>Recipe Name</mat-label>
-        <input matInput formControlName="recipeName">
+        <input type="text" matInput formControlName="recipeName">
       </mat-form-field>
       <br>
       <div
@@ -21,7 +21,7 @@
 
       <mat-form-field appearance="fill" width="100px">
         <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
+        <textarea type="text" matInput formControlName="description"></textarea>
       </mat-form-field>
       <div
         *ngIf="recipeFormControl.description.invalid && (recipeFormControl.description.dirty ||recipeFormControl.description.touched)">
@@ -35,7 +35,7 @@
       <br>
       <mat-form-field class="dirIngr" appearance="fill">
         <mat-label>Directions</mat-label>
-        <textarea matInput formControlName="directions"></textarea>
+        <textarea type="text" matInput formControlName="directions"></textarea>
       </mat-form-field>
       <div class="dirIngr"
         *ngIf="recipeFormControl.directions.invalid && (recipeFormControl.directions.dirty ||recipeFormControl.directions.touched)">
@@ -46,7 +46,7 @@
       <br>
       <mat-form-field class="dirIngr" appearance="fill">
         <mat-label>Ingredients</mat-label>
-        <textarea matInput formControlName="ingredients"></textarea>
+        <textarea type="text" matInput formControlName="ingredients"></textarea>
       </mat-form-field>
       <div
         *ngIf="recipeFormControl.ingredients.invalid && (recipeFormControl.ingredients.dirty ||recipeFormControl.ingredients.touched)">
@@ -56,7 +56,7 @@
 
       </div>
       <br>
-      <mat-label>Difficulty</mat-label>
+      <mat-label class="label">Difficulty</mat-label>
       <mat-slider formControlName="difficulty" (input)="difficulty = $event.value" [value]="difficulty" thumbLabel
         tickInterval="1" min="1" max="10"></mat-slider><br>
 
@@ -87,7 +87,7 @@
     <form class="recipeForm" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="legacy">
         <mat-label class="label">Image</mat-label>
-        <input required matInput formControlName="imageUrl">
+        <input type="text" required matInput formControlName="imageUrl">
       </mat-form-field>
       <div
         *ngIf="recipeFormControl.imageUrl.invalid && (recipeFormControl.imageUrl.dirty || recipeFormControl.imageUrl.touched)">

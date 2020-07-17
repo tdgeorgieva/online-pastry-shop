@@ -1,33 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 
 <app-new-recipe></app-new-recipe>
-<div>
-  <mat-card class="cardHistory">
-    <mat-card-title>
-      <h1 class="title">Recipes</h1>
-    </mat-card-title>
-    <mat-card-content>
-     
 
-        <div class="recipeList" *ngFor='let recipe of recipes'>
-          <mat-card-header>
-            <mat-card-title>{{recipe.recipeName}}</mat-card-title>
-            <mat-card-subtitle>Made by "User name"</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src="{{recipe.imageUrl}}" class="img">
-          <mat-card-content class="content">
-            <p>
-              {{recipe.description}}
-            </p>
-          </mat-card-content>
-          <button routerLink="/recipe/{{recipe._id}}" class="button" type="submit">
-            View Now
-          </button>
-          <button routerLink="/my-recipes" class="button" type="submit">
-            Delete
-          </button>
-        </div>
-        </mat-card-content>
-  </mat-card>
-</div>

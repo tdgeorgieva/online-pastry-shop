@@ -31,12 +31,10 @@ import {MatChipsModule} from '@angular/material/chips';
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { StarComponentComponent } from './star-component/star-component.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
-import { IngredientsComponent } from './ingredients/ingredients.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductComponent } from './add-product/add-product.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -63,12 +61,10 @@ export function tokenGetter() {
     AccountComponent,
     ShopComponent,
     ShoppingCartComponent,
-    StarComponentComponent,
     ProductViewComponent,
     RecipesComponent,
     MyRecipesComponent,
     NewRecipeComponent,
-    IngredientsComponent,
     AddProductComponent,
     RecipeViewComponent,
     UsersComponent,

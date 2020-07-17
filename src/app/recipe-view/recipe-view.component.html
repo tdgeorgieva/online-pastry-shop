@@ -1,30 +1,26 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<mat-card class="card">
-  <mat-card-content>
-    <div class="profile">
-      <form action="/action_page.php">
-        <label class="title" for="fname">{{recipe.recipeName}}</label><br>
 
-        <p><img class="img" src="{{ recipe.imageUrl }}" title="{{recipe.recipeName}}"></p>
-        <label for="lname">Description</label><br>
-        <p type="text" id="lname" name="description">{{recipe.description}}</p>
-        <label for="lname">Ingredients</label><br>
-        <p type="text" id="lname" name="ingredients">{{recipe.ingredients}}</p>
-        <label for="lname">Directions</label><br>
-        <p type="text" id="lname" name="directions">{{recipe.directions}}</p>
+<div class="profile">
+  <form action="/action_page.php">
+    <label class="title" for="fname">{{recipe.recipeName}}</label><br>
 
-        <p class="time">Prep time: {{recipe.prepTime | slice:0:5 }} min <br>
-          Cook time: {{recipe.cookTime | slice:0:5}} min
-        </p>
-        <p class="time">Servings: {{recipe.numberServings}}
-          Difficulty: {{recipe.difficulty}}
-        </p>
-        
-      </form>
-    </div>
-  </mat-card-content>
+    <p><img class="img" src="{{ recipe.imageUrl }}" title="{{recipe.recipeName}}"></p>
+    <label for="lname">Description</label><br>
+    <p type="text" id="lname" name="description">{{recipe.description}}</p>
+    <label for="lname">Ingredients</label><br>
+    <p type="text" id="lname" name="ingredients">{{recipe.ingredients}}</p>
+    <label for="lname">Directions</label><br>
+    <p type="text" id="lname" name="directions">{{recipe.directions}}</p>
 
-</mat-card>
+    <p class="time">Prep time: {{recipe.prepTime | slice:0:5 }} min <br>
+      Cook time: {{recipe.cookTime | slice:0:5}} min
+    </p>
+    <p class="time">Servings: {{recipe.numberServings}}
+      Difficulty: {{recipe.difficulty}}
+    </p>
+
+  </form>
+</div>
 <mat-card class="card">
   <mat-card-title class="title">Comments</mat-card-title>
   <mat-card-content>
@@ -36,10 +32,12 @@
         <span class="fa fa-star checked"></span>
 
       </li>
-      <button routerLink="/comment/edit/{{comment._id}}" class="button" *ngIf="this.AuthService.currentUserId === recipe.user_id || this.AuthService.hasPrivilege([this.adminRole]) ">
+      <button class="button"
+        *ngIf="this.AuthService.hasPrivilege([this.adminRole]) ">
         Edit
       </button>
-      <button class="button" (click)="deleteComment(comment._id)" *ngIf="this.AuthService.currentUserId === recipe.user_id || this.AuthService.hasPrivilege([this.adminRole])">
+      <button class="button" (click)="deleteComment(comment._id)"
+        *ngIf="this.AuthService.hasPrivilege([this.adminRole])">
         Delete
       </button>
     </ul>
