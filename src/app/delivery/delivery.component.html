@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="pricing">
-      <div class="row" *ngFor="let product of productList">
+      <div class="row" *ngFor="let product of productsList">
         <div class="col-9"> <span id="name">{{product.productName}}</span> </div>
         <div class="col-3"> <span id="price">€{{product.price}}</span> </div>
       </div>
@@ -19,9 +19,9 @@
     <div class="total">
       <div class="row">
         <div class="col-9"> <span id="name">Shipping</span> </div>
-        <div class="col-3"> <span id="price">£2.05</span> </div>
+        <div class="col-3"> <span id="price">{{ 2 | currency:'EUR':'symbol':'1.2-2'}}</span> </div>
         <div class="totalSum col-9">Total</div>
-        <div class="totalSum col-3">£262.99</div>
+        <div class="totalSum col-3">{{sum | currency:'EUR':'symbol':'1.2-2'}}</div>
       </div>
     </div>
     <div class="title">Please, provide valid address: <input type="text"></div>
@@ -88,7 +88,7 @@
 
     <div class="center">
       <button routerLink="/shop" class="button">Back to shop</button>
-      <button (click)="finish()" class="button">Proceed</button>
+      <button (click)="finish()" (click)="onSubmit()" class="button">Proceed</button>
     </div>
   </mat-card-content>
   <mat-card-content *ngIf="this.isSuccessful && this.isSubmitted">

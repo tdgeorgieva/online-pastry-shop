@@ -11,10 +11,10 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
   create(order: Order) {
-    return this.http.post<Order>('/api/addRecipe', order, {observe: 'response'})
-    .pipe(
-      catchError(this.handleError)
-    );
+    return this.http.post<Order>('/api/addOrder', order, { observe: 'response' })
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -30,6 +30,11 @@ export class OrderService {
     // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
-    }
+  }
+  findById(id: string): Observable<Order> | undefined {
+    return this.http.get<Order>('/api/order/' + id)
+      .pipe(catchError(this.handleError));
+  }
+
 
 }

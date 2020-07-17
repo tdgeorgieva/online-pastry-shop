@@ -86,6 +86,13 @@ const routes: Routes = [
     }
   },
   {
+    path: 'order/add', component: ShoppingCartComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      rolesAllowed: [Role.Admin, Role.Regular]
+    }
+  },
+  {
     path: 'comment/edit/:id', component: CommentsComponent, resolve: { recipe: CommentResolverService },
     canActivate: [AuthGuardService],
     data: {
@@ -93,7 +100,7 @@ const routes: Routes = [
     }
   },
   { path: 'recipe/:id', component: RecipeViewComponent, resolve: { recipe: RecipeResolverService } },
-  { path: 'account/:id', component: AccountComponent }
+  { path: 'account/:id', component: AccountComponent, resolve: { user: UserResolverService } }
 ];
 
 @NgModule({

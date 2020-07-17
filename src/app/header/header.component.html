@@ -6,11 +6,10 @@
     <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/recipes">Recipes</span>
     <span *ngIf="this.AuthService.isLoggedOut()" class="headerLinks" routerLink="/sign-in">Sign in</span>
     <span *ngIf="this.AuthService.isLoggedOut()" class="headerLinks" routerLink="/register">Sign-up</span>
-    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/account/">Account</span>
+    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks"  routerLink="/account">Account</span>
     <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/shopping-cart">Shopping Cart</span>
     <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/my-recipes">My Recipes</span>
-    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/main-page" (click)="logOut()">Log
-      Out</span>
+    <span *ngIf="this.AuthService.isLoggedIn()" class="headerLinks" routerLink="/main-page" (click)="logOut()">Log Out</span>
     <span *ngIf="this.AuthService.isLoggedIn() && this.AuthService.hasPrivilege([this.adminRole])" class="headerLinks"
       routerLink="/add-product">Add Product</span>
     <span *ngIf="this.AuthService.isLoggedIn() && this.AuthService.hasPrivilege([this.adminRole])" class="headerLinks"

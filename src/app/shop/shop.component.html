@@ -18,11 +18,14 @@
 
         <h3 class="productTitle">{{ product.productName }}</h3>
         <h4>Price: {{ product.price | currency: 'EUR':true: '1.2-2' }}</h4>
-        <button mat-button (click)="openDialog(product._id)">
-          <img class='img' [src]='product.imageUrl' [title]='product.productName'></button>
+        
+          <img class='img' [src]='product.imageUrl' [title]='product.productName'>
         <button *ngIf="this.AuthService.isLoggedIn()" class="button" type="submit" (click)="add(product)" (click)="openSnackBar(product)">
           Order Now
         </button>
+        <!-- <a  [routerLink]="['/order/add']" [state]="{ order_id: order._id, user_id: order.user_id}">
+          Checkout
+        </a>  -->
       </li>
 
     </ul>

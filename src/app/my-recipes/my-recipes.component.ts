@@ -35,12 +35,6 @@ export class MyRecipesComponent implements OnInit {
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
-  // performFilter(filterBy: string): Recipe[] {
-  //   console.log('filter');
-  //   filterBy = filterBy.toLocaleLowerCase();
-  //   return this.recipes.filter((recipe: Recipe) =>
-  //     recipe.recipeName.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  // }
   deleteRecipe(id: string): void {
     console.log('delete');
     this.recipeService.remove(id).subscribe(() => this.recipeService.findAll().subscribe(recipes => this.recipes = recipes));

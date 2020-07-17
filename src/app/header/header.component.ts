@@ -1,6 +1,6 @@
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Role } from '../user.model';
+import { Role, User } from '../user.model';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +9,7 @@ import { Role } from '../user.model';
 })
 export class HeaderComponent implements OnInit {
   adminRole: Role = Role.Admin;
+  user: User;
   constructor(private authService: AuthService) { }
 
   get AuthService() {
@@ -17,8 +18,6 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.authService.logout();
   }
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
 }

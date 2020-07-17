@@ -81,6 +81,12 @@
         <mat-label>Star Rating</mat-label>
         <input matInput formControlName="starRating">
       </mat-form-field>
+      <div
+        *ngIf="productFormControl.starRating.invalid && (productFormControl.starRating.dirty || productFormControl.starRating.touched)">
+        <mat-error *ngIf="productFormControl.starRating.errors?.pattern">
+          Rating must be a number between 1 - 5.
+        </mat-error>
+      </div>
       <br>
 
       <mat-form-field appearance="legacy">

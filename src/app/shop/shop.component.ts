@@ -23,23 +23,15 @@ export class ShopComponent implements OnInit {
   products: Product[];
   selectedProduct: Product;
   filteredPosts: Product[];
+
   constructor(private productService: ProductService,
-    public matDialog: MatDialog, private _snackBar: MatSnackBar,
-    private route: ActivatedRoute, private authService: AuthService) {
+              public matDialog: MatDialog, private _snackBar: MatSnackBar,
+              private authService: AuthService) {
 
   }
   get AuthService() {
     return this.authService;
   }
-  openDialog(product_id: string) {
-    const dialogConfig = new MatDialogConfig();
-    this.productService.findById(product_id).subscribe(product => {
-      this.matDialog.open(ProductViewComponent, { data: { product } });
-    });
-  }
-
-
-
   openSnackBar(product: Product) {
 
     this._snackBar.open('Added to shopping cart', (`Price: €${(this.productService.productPrice(product))} `), {
@@ -48,17 +40,15 @@ export class ShopComponent implements OnInit {
       verticalPosition: this.verticalPosition,
     });
   }
-  add(product: Product): void {
+  add(product: Product){
     this.productService.addToCart(product);
-    console.log(this.productService.sum);
   }
-
-
   ngOnInit(): void {
-    this.AuthService.hasPrivilege([Role.Admin])
+    this.AuthService.hasPrivilege([Role.Admin]);
     this.productService.findAll().subscribe(products => {
       this.products = products.sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime());
       this.filteredPosts = this.products;
     });
+    console.log(this.productService.cartProducts.length);
   }
 }

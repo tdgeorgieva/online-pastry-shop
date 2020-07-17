@@ -18,30 +18,29 @@
         <input matInput formControlName="text">
       </mat-form-field>
       <br>
-      <div
-        *ngIf="commentFormControl.text.invalid && (commentFormControl.text.dirty ||commentFormControl.text.touched)">
+      <div *ngIf="commentFormControl.text.invalid && (commentFormControl.text.dirty ||commentFormControl.text.touched)">
         <mat-error *ngIf="commentFormControl.text.errors?.required">
           Comment is required.
         </mat-error>
       </div>
       <br>
-   
-    <mat-form-field appearance="legacy">
-      <mat-label>Rating</mat-label>
-      <input matInput formControlName="rating">
-    </mat-form-field>
-    <div
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Rating</mat-label>
+        <input matInput formControlName="rating">
+      </mat-form-field>
+      <div
         *ngIf="commentFormControl.rating.invalid && (commentFormControl.rating.dirty || commentFormControl.rating.touched)">
         <mat-error *ngIf="commentFormControl.rating.errors?.pattern">
           Rating must be a number between 1 - 5.
         </mat-error>
       </div>
-    <br>
+      <br>
 
-    <button type="submit" [disabled]="!commentForm.valid" mat-button color="primary">
-      Submit
-    </button>
- </form>
+      <button type="submit" [disabled]="!commentForm.valid" mat-button color="primary">
+        Submit
+      </button>
+    </form>
   </mat-card-content>
 </mat-card>
 Rating <br>

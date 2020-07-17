@@ -61,10 +61,7 @@ export class CommentsComponent implements OnInit {
         });
 
       } else {
-        this.commentsService.create(comment).subscribe(res => {
-          // res.headers.keys();
-           //this.router.navigate(["/recipe/{{recip}}"]);
-        });
+        this.commentsService.create(comment).subscribe(res => { });
       }
 
     });

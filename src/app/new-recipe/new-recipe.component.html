@@ -87,12 +87,15 @@
     <form class="recipeForm" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="legacy">
         <mat-label class="label">Image</mat-label>
-        <input matInput formControlName="imageUrl">
+        <input required matInput formControlName="imageUrl">
       </mat-form-field>
       <div
         *ngIf="recipeFormControl.imageUrl.invalid && (recipeFormControl.imageUrl.dirty || recipeFormControl.imageUrl.touched)">
         <mat-error *ngIf="recipeFormControl.imageUrl.errors?.pattern">
           Image URL should be valid (ex. http://example.com/image/path.jpeg).
+        </mat-error>
+        <mat-error *ngIf="recipeFormControl.imageUrl.errors?.pattern">
+          Image URL is required.
         </mat-error>
       </div>
 

@@ -4,15 +4,23 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError  } from 'rxjs/';
 
+interface Response {
+	a: number;
+}
+let jsonString = '{"a":"2"}';
+let totalSum = JSON.parse(jsonString) as Response;
+let sum = {
+    a: Number(totalSum.a),
+  } as Response;
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductService {
   static nextId = 0;
-  private products = [];
-  sum: number;
-  counterProducts: number;
+  counterProducts: number = 0;
   cartProducts: Product[] = [];
 
   constructor(private http: HttpClient) {}
@@ -57,15 +65,19 @@ export class ProductService {
     return this.cartProducts;
   }
   addToCart(product: Product): void {
-    //product.price = parseFloat(product.price);
     this.counterProducts++;
     this.cartProducts.push(product);
-    this.sum += product.price;
-    console.log(product.price);
-
+    console.log("added product: ", product);
+    sum.a += Number(product.price);
+    console.log("cart products: ", this.cartProducts.length);
   }
-  add(product: Product): number {
-    return this.sum + product.price;
+  deleteCart() {
+    this.counterProducts = 0;
+    this.cartProducts = [];
+    sum.a = 2;
+  }
+  displaySum() {
+    return sum.a;
   }
   productPrice(product: Product): number {
     return product.price;

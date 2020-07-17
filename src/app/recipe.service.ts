@@ -45,7 +45,7 @@ export class RecipeService {
             .pipe(catchError(this.handleError));
     }
     findByUserId(id: string): Observable<Recipe[]> | undefined {
-      return this.http.get<Recipe[]>('/api/recipe/user/' + id)
+      return this.http.get<Recipe[]>('/api/user/recipe/' + id)
           .pipe(catchError(this.handleError));
   }
 

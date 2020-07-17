@@ -1,7 +1,10 @@
+import { UserService } from './../user.service';
 import { ProductService } from '../product.service';
 
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
+import { Order } from '../order';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,23 +12,20 @@ import { Product } from '../product.model';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-
-  productList: Product[];
-  product: Product;
-  pageTitle: string = 'Shopping List';
+  order: Order;
+  products = this.productService.cartProducts ;
+  user: User;
+  pageTitle = 'Shopping List';
   checkout: number = this.productService.counterProducts;
+  sum = this.productService.displaySum();
+  showImage = false;
 
-  showImage: boolean = false;
-
-  constructor(private productService: ProductService) { }
-  
-  get products(): Product[] {
-    return this.productService.cartProducts;
-  }
+  constructor( private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.findAll().subscribe(products => this.productList = products);
-    console.log(this.productService.add(this.product));
+    // console.log(this.productService.cartProducts.length);
+    console.log(this.productService.cartProducts);
+    // this.productService.findAll().subscribe(products => this.productService.cartProducts = products);
   }
 
 }

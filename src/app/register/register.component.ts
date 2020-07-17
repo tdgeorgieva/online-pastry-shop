@@ -55,6 +55,7 @@ export class RegisterComponent implements OnInit {
       this.registerForm.controls.city.value,
       this.registerForm.controls.address.value,
       this.registerForm.controls.image.value);
+      
     this.userService.create(user).subscribe(res => {
       this.isSuccessful = true;
       // res.headers.keys();
@@ -67,45 +68,41 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.registerForm = new FormGroup({
-        firstName: new FormControl(this.firstName, [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(20)
-        ]),
-        lastName: new FormControl(this.lastName, [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(20)
-        ]),
-        password: new FormControl(this.password, [
-          Validators.required,
-          Validators.minLength(8)
-        ]),
-        email: new FormControl(this.email, [
-          Validators.required,
-          Validators.email,
-        ]),
-        confirmPassword: new FormControl(this.confirmPassword, [
-          RegisterComponent.matchValues('password'),
-        ]),
-        phone: new FormControl(this.phone, [
-          Validators.required,
-          Validators.maxLength(9),
-          Validators.minLength(8),
-          Validators.pattern('^[0-9 ]*')
-        ]),
-        
-        city: new FormControl(this.city),
-        address: new FormControl(this.address),
-        image: new FormControl(this.image, Validators.required),
-       
-
-      });
-
-      this.registerForm.controls.password.valueChanges.subscribe(() => {
-        this.registerForm.controls.confirmPassword.updateValueAndValidity();
-      });
-    }
+    this.registerForm = new FormGroup({
+      firstName: new FormControl(this.firstName, [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(20)
+      ]),
+      lastName: new FormControl(this.lastName, [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(20)
+      ]),
+      password: new FormControl(this.password, [
+        Validators.required,
+        Validators.minLength(8)
+      ]),
+      email: new FormControl(this.email, [
+        Validators.required,
+        Validators.email,
+      ]),
+      confirmPassword: new FormControl(this.confirmPassword, [
+        RegisterComponent.matchValues('password'),
+      ]),
+      phone: new FormControl(this.phone, [
+        Validators.required,
+        Validators.maxLength(9),
+        Validators.minLength(8),
+        Validators.pattern('^[0-9 ]*')
+      ]),
+      city: new FormControl(this.city),
+      address: new FormControl(this.address),
+      image: new FormControl(this.image, Validators.required),
+    });
+    this.registerForm.controls.password.valueChanges.subscribe(() => {
+      this.registerForm.controls.confirmPassword.updateValueAndValidity();
+    });
+  }
 
 }

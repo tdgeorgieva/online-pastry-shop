@@ -63,7 +63,7 @@ export class AddProductComponent implements OnInit {
         Validators.maxLength(5),
         Validators.minLength(4),
       ]),
-      starRating: new FormControl (this.starRating),
+      starRating: new FormControl (this.starRating, Validators.pattern('[1-5]')),
       imageUrl: new FormControl (this.imageUrl, [
         Validators.required
       ]),
