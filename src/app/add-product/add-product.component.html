@@ -1,8 +1,8 @@
 <mat-card class="card">
   <mat-card-title>
-    <h1 class="title">Add New Product</h1>
+    <h1 class="title"> New Product</h1>
   </mat-card-title>
-  <mat-card-content>
+  <mat-card-content *ngIf="!this.isSubmitted || (this.isSubmitted && !this.isSuccessful)">
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="legacy">
         <mat-label>Product Name</mat-label>
@@ -105,5 +105,10 @@
       </button>
       <br>
     </form>
+  </mat-card-content>
+  <mat-card-content *ngIf="this.isSuccessful && this.isSubmitted">
+    <h2>Thank you for adding a product!</h2>
+    <p>Add more products!</p>
+   
   </mat-card-content>
 </mat-card>

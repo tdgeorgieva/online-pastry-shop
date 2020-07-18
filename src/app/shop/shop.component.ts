@@ -16,14 +16,15 @@ import { Role } from '../user.model';
 })
 export class ShopComponent implements OnInit {
 
-
+  product: Product;
+  productsList: Product;
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   title = 'example';
   products: Product[];
   selectedProduct: Product;
   filteredPosts: Product[];
-
+  adminRole: Role = Role.Admin;
   constructor(private productService: ProductService,
               public matDialog: MatDialog, private _snackBar: MatSnackBar,
               private authService: AuthService) {
@@ -42,6 +43,11 @@ export class ShopComponent implements OnInit {
   }
   add(product: Product){
     this.productService.addToCart(product);
+  }
+  deleteProduct(id: string) {
+    console.log('delete');
+    this.productService.remove(id).subscribe(() => this.productService.findById(this.product._id).subscribe(
+      products => this.productsList = products));
   }
   ngOnInit(): void {
     this.AuthService.hasPrivilege([Role.Admin]);
